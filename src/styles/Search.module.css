@@ -1,0 +1,32 @@
+.searchContainer {
+  border-radius: 30px;
+  border: 1px solid white;
+  width: auto;
+  box-sizing: border-box;
+  font-size: 16px;
+  position: relative;
+  background-color: white;
+  padding: 0 20px;
+  color: var(--primary-color);
+  width: 100%;
+}
+
+.searchInput {
+  padding: 20px clamp(0px, 3vw, 20px);
+  border: none;
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+  outline: none;
+  font-size: clamp(12px, 3vw, 16px);
+  font-weight: bold;
+  font-family: "Manrope", sans-serif;
+  color: var(--primary-color);
+}
+
+.searchClear {
+  position: absolute;
+  right: 20px;
+  top: 16px;
+  cursor: pointer;
+  font-size: 20px;
+}

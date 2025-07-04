@@ -1,0 +1,53 @@
+import { Book } from "@/types/book";
+
+export const mockBook: Book = {
+  kind: "books#volume",
+  id: "1",
+  etag: "",
+  selfLink: "",
+  volumeInfo: {
+    title: "Candra books",
+    authors: ["author 1", "author 2"],
+    averageRating: 4.5,
+    publishedDate: "2025-01-13",
+    description: "",
+    industryIdentifiers: [],
+    readingModes: { text: true, image: false },
+    pageCount: 200,
+    printType: "BOOK",
+    categories: ["Test"],
+    maturityRating: "NOT_MATURE",
+    allowAnonLogging: false,
+    contentVersion: "",
+    panelizationSummary: {
+      containsEpubBubbles: false,
+      containsImageBubbles: false,
+    },
+    imageLinks: {
+      smallThumbnail: "",
+      thumbnail: "",
+    },
+    language: "en",
+    previewLink: "",
+    infoLink: "",
+    canonicalVolumeLink: "",
+  },
+  saleInfo: {
+    country: "ID",
+    saleability: "NOT_FOR_SALE",
+    isEbook: false,
+  },
+  accessInfo: {
+    country: "ID",
+    viewability: "PARTIAL",
+    embeddable: true,
+    publicDomain: false,
+    textToSpeechPermission: "ALLOWED",
+    epub: { isAvailable: false },
+    pdf: { isAvailable: false },
+    webReaderLink: "",
+    accessViewStatus: "SAMPLE",
+    quoteSharingAllowed: false,
+  },
+  searchInfo: { textSnippet: "" },
+};

@@ -1,0 +1,200 @@
+.bookList {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.bookCard {
+  padding: 0px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  max-height: 320px;
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bookImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.bookCard:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.bookCard:hover .bookCardDescriptionTitle {
+  color: var(--primary-color);
+}
+
+.bookCard:hover .bookCardDescriptionPromotion {
+  transform: rotate(20deg) scale(1.2);
+}
+
+.bookCard:hover .bookImage {
+  transform: scale(1.2);
+}
+
+@media (max-width: 1340px) {
+  .bookList {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1120px) {
+  .bookList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .bookList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .bookList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .bookList {
+    grid-template-columns: 1fr;
+  }
+  .bookCard {
+    max-width: 100%;
+  }
+}
+
+.bookCardNewBadge {
+  background-color: var(--new-badge);
+  padding: 5px 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+.bookCardDescription {
+  padding: 20px;
+  padding-top: 100px;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0,
+    rgb(0, 0, 0) 100%
+  );
+}
+
+.bookCardDescriptionOverlay {
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0,
+    rgb(0, 0, 0) 100%
+  );
+  height: 160px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.bookCardDescriptionTitle {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+  color: #fff;
+}
+
+.bookCardDescriptionAuthor {
+  font-size: 10px;
+  font-weight: bold;
+  color: rgb(244, 244, 192);
+}
+
+.bookCardDescriptionStar {
+  color: var(--star);
+}
+
+.bookCardDescriptionPromotion {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  position: absolute;
+  right: 20px;
+  top: -25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.bookCardDescriptionPromotionGift {
+  background-color: var(--promotion-gift);
+}
+
+.bookCardDescriptionPromotionDiscount {
+  background-color: var(--promotion-discount);
+  font-weight: bold;
+  color: white;
+}
+
+.bookCardDescriptionPromotion1plus1 {
+  background-color: var(--promotion-1plus1);
+  font-weight: bold;
+  color: white;
+}
+
+.bookCardDescriptionDetail {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bookCardDescriptionRating {
+  font-size: 12px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookCardDescriptionCookTime {
+  font-size: 12px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookCardDescriptionClock {
+  color: var(--clock);
+}
+
+.bookCardDescriptionRating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ratingText {
+  font-size: 0.9rem;
+  color: #555;
+}
