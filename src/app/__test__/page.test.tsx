@@ -1,28 +1,42 @@
 import { render, screen } from "@testing-library/react";
 import Home from "../page";
+import { useFetchData as mockUseFetchData } from "@/hooks/useFetchData";
 
 jest.mock("@/hooks/useFetchData", () => ({
   useFetchData: jest.fn(),
 }));
 
-jest.mock("@/components/Search", () => (props: any) => (
-  <div data-testid="search">Search Component</div>
-));
-jest.mock("@/components/Book", () => (props: any) => (
-  <div data-testid="book-component">Book Component</div>
-));
-jest.mock("@/components/ErrorPage", () => ({ message }: any) => (
-  <div data-testid="error-page">{message}</div>
-));
-jest.mock("@/components/DataNotFound", () => () => (
-  <div data-testid="data-not-found">No books found</div>
-));
+jest.mock("@/components/Search", () => {
+  const MockSearch = () => <div data-testid="search">Search Component</div>;
+  MockSearch.displayName = "MockSearch";
+  return MockSearch;
+});
+
+jest.mock("@/components/Book", () => {
+  const MockBook = () => <div data-testid="book-component">Book Component</div>;
+  MockBook.displayName = "MockBook";
+  return MockBook;
+});
+
+jest.mock("@/components/ErrorPage", () => {
+  const MockErrorPage = ({ message }: { message: string }) => (
+    <div data-testid="error-page">{message}</div>
+  );
+  MockErrorPage.displayName = "MockErrorPage";
+  return MockErrorPage;
+});
+
+jest.mock("@/components/DataNotFound", () => {
+  const MockNotFound = () => (
+    <div data-testid="data-not-found">No books found</div>
+  );
+  MockNotFound.displayName = "MockNotFound";
+  return MockNotFound;
+});
 
 describe("Homepage", () => {
-  const useFetchData = require("@/hooks/useFetchData").useFetchData;
-
   it("renders ErrorPage when there is an error", () => {
-    useFetchData.mockReturnValue({
+    (mockUseFetchData as jest.Mock).mockReturnValue({
       books: [],
       loading: false,
       errorMessage: "Something went wrong",
@@ -35,7 +49,7 @@ describe("Homepage", () => {
   });
 
   it("renders DataNotFound when books is empty and not loading", () => {
-    useFetchData.mockReturnValue({
+    (mockUseFetchData as jest.Mock).mockReturnValue({
       books: [],
       loading: false,
       errorMessage: null,
@@ -46,9 +60,12 @@ describe("Homepage", () => {
   });
 
   it("renders BookComponent when books are available", () => {
-    useFetchData.mockReturnValue({
+    (mockUseFetchData as jest.Mock).mockReturnValue({
       books: [
-        { id: "1", volumeInfo: { title: "Book", authors: [], imageLinks: {} } },
+        {
+          id: "1",
+          volumeInfo: { title: "Book", authors: [], imageLinks: {} },
+        },
       ],
       loading: false,
       errorMessage: null,
@@ -59,7 +76,7 @@ describe("Homepage", () => {
   });
 
   it("always renders Search and title", () => {
-    useFetchData.mockReturnValue({
+    (mockUseFetchData as jest.Mock).mockReturnValue({
       books: [],
       loading: false,
       errorMessage: null,

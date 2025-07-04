@@ -25,7 +25,7 @@ export default function BookComponent({ loading, books }: BookProps) {
       try {
         const favorites = await getFavorites();
         const ids = new Set<string>(
-          (favorites || []).map((fav: any) => fav.book_id)
+          (favorites || []).map((fav: { book_id: string }) => fav.book_id)
         );
         setFavoriteBookIds(ids);
       } catch (err) {
@@ -54,7 +54,7 @@ export default function BookComponent({ loading, books }: BookProps) {
         setFavoriteBookIds((prev) => new Set(prev).add(bookId));
       }
     } catch (err) {
-      alert("Failed to toggle favorite");
+      console.error("Failed to load favorites", err);
     }
   };
 
@@ -72,7 +72,7 @@ export default function BookComponent({ loading, books }: BookProps) {
             />
             <BookLabel publishedDate={book.volumeInfo.publishedDate} />
             <Image
-              src={book.volumeInfo.imageLinks?.thumbnail || "Book"}
+              src={book.volumeInfo.imageLinks?.thumbnail || "/book.png"}
               alt={book.volumeInfo.title}
               className={styles.bookImage}
               width={300}
