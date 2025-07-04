@@ -198,3 +198,19 @@
   font-size: 0.9rem;
   color: #555;
 }
+
+.favoriteIcon {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  font-size: 24px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.favoriteIconActive {
+  color: #ef4444;
+}
+.favoriteIconInactive {
+  color: #9ca3af;
+}
